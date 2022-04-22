@@ -1,0 +1,52 @@
+body {
+  background: white;
+  font-family: Orbitron;
+}
+
+.container {
+  display: flex;
+}
+.clock {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: black;
+  font-size: 60px;
+  letter-spacing: 7px;
+}
+
+.timeLine {
+  width: 90%;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+}
+.tomorrow {
+  position: absolute;
+  height: 50px;
+  margin-left: 89%;
+  border-radius: 10px;
+  background-color: #eeedec;
+}
+.focus {
+  position: absolute;
+  width: 3.33%;
+  height: 50px;
+  border-radius: 10px;
+  background-color: rgba(144, 238, 144, 0.5);
+}
+.hours {
+  display: flex;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.hours div {
+  background-color: #eeedec;
+  border-radius: 5px;
+  margin-right: 2px;
+  width: 90%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
