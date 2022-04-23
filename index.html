@@ -3,45 +3,129 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="styles.css" />
-    <title>Testing timeline</title>
+    <title>Meteo Cat</title>
   </head>
   <body>
-    <div class="timeLine">
-      <div class="focus"></div>
-      <div class="tomorrow">
-        <div class="hours">
-          <div>+1...</div>
+    <div class="container-lg my-5 mx-auto">
+      <div class="container1 w-50 mx-auto">
+        <h1 class="text-muted text-center my-4">Meteo Cat App</h1>
+
+        <form class="change-location my-4 text-muted text-center">
+          <label for="city">Busca un municipio de Cataluña</label>
+          <input type="text" name="city" class="form-control p-4" />
+        </form>
+      </div>
+      <div class="container2 my-5 mx-auto">
+        <h5>El tiempo en <span class="text-success">Barcelona</span></h5>
+        <div class="d-flex">
+          <p>
+            Predicción generada el día
+            <span class="text-success clock">11.03.2222</span> a las
+            <span class="text-success clock" id="clock"></span>
+          </p>
+        </div>
+        <h5 class="text-muted text-center my-4">Hoy</h5>
+        <div>
+          <table class="table mx-auto">
+            <thead>
+              <div class="focus"></div>
+              <tr>
+                <th scope="col"></th>
+                <div class="timeLine">
+                  <th scope="col">00h</th>
+                  <th scope="col">01h</th>
+                  <th scope="col">02h</th>
+                  <th scope="col">03h</th>
+                  <th scope="col">04h</th>
+                  <th scope="col">05h</th>
+                  <th scope="col">06h</th>
+                  <th scope="col">07h</th>
+                  <th scope="col">08h</th>
+                  <th scope="col">09h</th>
+                  <th scope="col">10h</th>
+                  <th scope="col">11h</th>
+                  <th scope="col">12h</th>
+                  <th scope="col">13h</th>
+                  <th scope="col">14h</th>
+                  <th scope="col">15h</th>
+                  <th scope="col">16h</th>
+                  <th scope="col">17h</th>
+                  <th scope="col">18h</th>
+                  <th scope="col">19h</th>
+                  <th scope="col">20h</th>
+                  <th scope="col">21h</th>
+                  <th scope="col">22h</th>
+                  <th scope="col">23h</th>
+                </div>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">Temp</th>
+                <td>6 &deg;</td>
+                <td>7</td>
+                <td>8</td>
+                <td>14</td>
+                <td>16</td>
+                <td>37</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
-      <div class="hours">
-        <div>0 h</div>
-        <div>1 h</div>
-        <div>2 h</div>
-        <div>3 h</div>
-        <div>4 h</div>
-        <div>5 h</div>
-        <div>6 h</div>
-        <div>7 h</div>
-        <div>8 h</div>
-        <div>9 h</div>
-        <div>10 h</div>
-        <div>11 h</div>
-        <div>12 h</div>
-        <div>13 h</div>
-        <div>14 h</div>
-        <div>15 h</div>
-        <div>16 h</div>
-        <div>17 h</div>
-        <div>18 h</div>
-        <div>19 h</div>
-        <div>20 h</div>
-        <div>21 h</div>
-        <div>22 h</div>
-        <div>23 h</div>
-      </div>
     </div>
-    <div id="clock" class="clock"></div>
     <script src="sandbox.js"></script>
   </body>
 </html>
