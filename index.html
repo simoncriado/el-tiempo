@@ -23,21 +23,21 @@
         </form>
       </div>
       <div class="container2 my-5 mx-auto">
-        <h5>El tiempo en <span class="text-success">Barcelona</span></h5>
+        <h5>El tiempo en <span class="city text-success"></span></h5>
         <div class="d-flex">
           <p>
             Predicción generada el día
-            <span class="text-success clock">11.03.2222</span> a las
+            <span class="text-success clock" id="date"></span> a las
             <span class="text-success clock" id="clock"></span>
           </p>
         </div>
         <h5 class="text-muted text-center my-4">Hoy</h5>
         <div>
-          <table class="table mx-auto">
+          <table class="table-sm mx-auto">
             <thead>
               <div class="focus"></div>
               <tr>
-                <th scope="col"></th>
+                <th scope="col">Horas</th>
                 <div class="timeLine">
                   <th scope="col">00h</th>
                   <th scope="col">01h</th>
@@ -66,66 +66,12 @@
                 </div>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <th scope="row">Temp</th>
-                <td>6 &deg;</td>
-                <td>7</td>
-                <td>8</td>
-                <td>14</td>
-                <td>16</td>
-                <td>37</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
+            <tbody></tbody>
           </table>
         </div>
       </div>
     </div>
-    <script src="sandbox.js"></script>
+    <script src="/scripts/sandbox.js"></script>
+    <script src="/scripts/data.js"></script>
   </body>
 </html>

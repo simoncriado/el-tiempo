@@ -1,5 +1,6 @@
 const focus = document.querySelector(".focus");
 const clockNode = document.querySelector("#clock");
+const dateNode = document.querySelector("#date");
 
 const movingFocus = () => {
   // We get todays date and roll the time back to 00:00:00
@@ -18,6 +19,11 @@ const movingFocus = () => {
     let actualDate = new Date();
     let actualTick = actualDate.toLocaleTimeString();
     clockNode.textContent = actualTick;
+
+    const date = `${actualDate.getDate()}-${
+      actualDate.getMonth() + 1
+    }-${actualDate.getFullYear()}`;
+    dateNode.textContent = date;
 
     // We calculate the amount of seconds between 00:00:00 and the current time
     let diffMilliseconds = actualDate - lastMidnight;
