@@ -9,29 +9,16 @@ body {
 .container2 {
   max-width: 90%;
 }
-.table {
-}
 .clock {
   font-size: 20px;
   letter-spacing: 0.2em;
 }
 .timeLine {
-  height: 50px;
+  height: 1px;
 }
 .focus {
   position: absolute;
-  width: 3.33%;
-  height: 250px;
+  height: 215px;
   border-radius: 10px;
   background-color: rgba(144, 238, 144, 0.5);
-}
-.hours {
-  display: flex;
-}
-.hours div {
-  background-color: #eeedec;
-  width: 90%;
-  height: 50px;
-  line-height: 50px;
-  text-align: center;
 }

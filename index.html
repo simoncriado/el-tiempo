@@ -14,13 +14,24 @@
   </head>
   <body>
     <div class="container-lg my-5 mx-auto">
-      <div class="container1 w-50 mx-auto">
+      <div class="container1 mx-auto">
         <h1 class="text-muted text-center my-4">Meteo Cat App</h1>
 
         <form class="change-location my-4 text-muted text-center">
           <label for="city">Busca un municipio de Cataluña</label>
           <input type="text" name="city" class="form-control p-4" />
         </form>
+      </div>
+      <div class="d-none containerSearch my-5 mx-auto">
+        <h5 class="text-warning text-center my-5">
+          Busca un municipio para que se generen los datos
+        </h5>
+      </div>
+      <div class="d-none containerError my-5 mx-auto">
+        <h5 class="text-danger text-center my-5">
+          No hemos encontrado ningún municipio con ese nombre. Por favor, prueba
+          de nuevo!
+        </h5>
       </div>
       <div class="container2 my-5 mx-auto">
         <h5>El tiempo en <span class="city text-success"></span></h5>
@@ -31,44 +42,107 @@
             <span class="text-success clock" id="clock"></span>
           </p>
         </div>
-        <h5 class="text-muted text-center my-4">Hoy</h5>
-        <div>
-          <table class="table-sm mx-auto">
-            <thead>
-              <div class="focus"></div>
-              <tr>
-                <th scope="col">Horas</th>
-                <div class="timeLine">
-                  <th scope="col">00h</th>
-                  <th scope="col">01h</th>
-                  <th scope="col">02h</th>
-                  <th scope="col">03h</th>
-                  <th scope="col">04h</th>
-                  <th scope="col">05h</th>
-                  <th scope="col">06h</th>
-                  <th scope="col">07h</th>
-                  <th scope="col">08h</th>
-                  <th scope="col">09h</th>
-                  <th scope="col">10h</th>
-                  <th scope="col">11h</th>
-                  <th scope="col">12h</th>
-                  <th scope="col">13h</th>
-                  <th scope="col">14h</th>
-                  <th scope="col">15h</th>
-                  <th scope="col">16h</th>
-                  <th scope="col">17h</th>
-                  <th scope="col">18h</th>
-                  <th scope="col">19h</th>
-                  <th scope="col">20h</th>
-                  <th scope="col">21h</th>
-                  <th scope="col">22h</th>
-                  <th scope="col">23h</th>
-                </div>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
+        <h5 class="text-muted text-center my-4">Previsión para hoy</h5>
+        <table class="table table-fixed mx-auto">
+          <thead>
+            <tr>
+              <th class="todayHours" scope="col">Horas</th>
+              <th class="todayHours" scope="col">00h</th>
+              <th class="todayHours" scope="col">01h</th>
+              <th class="todayHours" scope="col">02h</th>
+              <th class="todayHours" scope="col">03h</th>
+              <th class="todayHours" scope="col">04h</th>
+              <th class="todayHours" scope="col">05h</th>
+              <th class="todayHours" scope="col">06h</th>
+              <th class="todayHours" scope="col">07h</th>
+              <th class="todayHours" scope="col">08h</th>
+              <th class="todayHours" scope="col">09h</th>
+              <th class="todayHours" scope="col">10h</th>
+              <th class="todayHours" scope="col">11h</th>
+              <th class="todayHours" scope="col">12h</th>
+              <th class="todayHours" scope="col">13h</th>
+              <th class="todayHours" scope="col">14h</th>
+              <th class="todayHours" scope="col">15h</th>
+              <th class="todayHours" scope="col">16h</th>
+              <th class="todayHours" scope="col">17h</th>
+              <th class="todayHours" scope="col">18h</th>
+              <th class="todayHours" scope="col">19h</th>
+              <th class="todayHours" scope="col">20h</th>
+              <th class="todayHours" scope="col">21h</th>
+              <th class="todayHours" scope="col">22h</th>
+              <th class="todayHours" scope="col">23h</th>
+            </tr>
+          </thead>
+          <tbody class="hoy"></tbody>
+        </table>
+        <h5 class="text-muted text-center my-4">Previsión para mañana</h5>
+        <table class="table table-fixed mx-auto">
+          <thead>
+            <tr>
+              <th scope="col">Horas</th>
+              <th scope="col">00h</th>
+              <th scope="col">01h</th>
+              <th scope="col">02h</th>
+              <th scope="col">03h</th>
+              <th scope="col">04h</th>
+              <th scope="col">05h</th>
+              <th scope="col">06h</th>
+              <th scope="col">07h</th>
+              <th scope="col">08h</th>
+              <th scope="col">09h</th>
+              <th scope="col">10h</th>
+              <th scope="col">11h</th>
+              <th scope="col">12h</th>
+              <th scope="col">13h</th>
+              <th scope="col">14h</th>
+              <th scope="col">15h</th>
+              <th scope="col">16h</th>
+              <th scope="col">17h</th>
+              <th scope="col">18h</th>
+              <th scope="col">19h</th>
+              <th scope="col">20h</th>
+              <th scope="col">21h</th>
+              <th scope="col">22h</th>
+              <th scope="col">23h</th>
+            </tr>
+          </thead>
+          <tbody class="mañana"></tbody>
+        </table>
+        <h5 class="text-muted text-center my-4">
+          Previsión para pasado mañana
+        </h5>
+        <table class="table table-fixed mx-auto">
+          <thead>
+            <tr>
+              <th scope="col">Horas</th>
+              <th scope="col">00h</th>
+              <th scope="col">01h</th>
+              <th scope="col">02h</th>
+              <th scope="col">03h</th>
+              <th scope="col">04h</th>
+              <th scope="col">05h</th>
+              <th scope="col">06h</th>
+              <th scope="col">07h</th>
+              <th scope="col">08h</th>
+              <th scope="col">09h</th>
+              <th scope="col">10h</th>
+              <th scope="col">11h</th>
+              <th scope="col">12h</th>
+              <th scope="col">13h</th>
+              <th scope="col">14h</th>
+              <th scope="col">15h</th>
+              <th scope="col">16h</th>
+              <th scope="col">17h</th>
+              <th scope="col">18h</th>
+              <th scope="col">19h</th>
+              <th scope="col">20h</th>
+              <th scope="col">21h</th>
+              <th scope="col">22h</th>
+              <th scope="col">23h</th>
+            </tr>
+          </thead>
+          <tbody class="pasadoMañana"></tbody>
+        </table>
       </div>
     </div>
     <script src="/scripts/sandbox.js"></script>
