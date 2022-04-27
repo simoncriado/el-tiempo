@@ -19,15 +19,20 @@ const movingFocus = () => {
     let actualTick = actualDate.toLocaleTimeString();
     clockNode.textContent = actualTick;
 
+    // We get the current date and format it to display the date
     const date = `${actualDate.getDate()}-${
       actualDate.getMonth() + 1
     }-${actualDate.getFullYear()}`;
     dateNode.textContent = date;
 
-    currentHour = actualDate.getHours();
+    // From the current date we extract the hours
+    currentHour = actualDate.getHours() + 2;
 
+    // We target all hours (0-23) in todays forecast table
     const todayTableHours = document.querySelectorAll(".todayHours");
     const todayTable = document.querySelector(".hoy");
+    // We loop through every hour and we check if the single hour in the table is equal to the current hour and also if the today table is populated
+    // If so we add the class focus to display the green highlight on the current today´s hour
     todayTableHours.forEach((hour) => {
       hour.classList.remove("focus");
       if (hour.innerText == `${currentHour}h` && todayTable.innerHTML != "") {
