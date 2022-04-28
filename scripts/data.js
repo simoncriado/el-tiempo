@@ -33,9 +33,11 @@ fetch("https://api.meteo.cat/quotes/v1/consum-actual", {
   });
 
 // Fetch to get all "sky symbols"
+// If stored in localStorage we get the symbols
 if (localStorage.getItem("simbolos")) {
   const simbolosLocalStorage = localStorage.getItem("simbolos");
   const simbolos = JSON.parse(simbolosLocalStorage);
+  // If not stored yet we fetch the symbols and then save them in localStorage
 } else {
   fetch("https://api.meteo.cat/referencia/v1/simbols", {
     method: "GET",
@@ -51,7 +53,6 @@ if (localStorage.getItem("simbolos")) {
     })
     .then(function (json) {
       simbolos = json;
-      // Once we have all cities we fire the search function
       // Set local storage
       localStorage.setItem("simbolos", JSON.stringify(simbolos));
     })
@@ -67,6 +68,7 @@ const dataTable = (prediccionMunicipio) => {
   const tbodyMañana = document.querySelector(".mañana");
   const tbodyPasadoMañana = document.querySelector(".pasadoMañana");
 
+  // We get the sky symbols from localStorage
   const simbolosLocalStorage = localStorage.getItem("simbolos");
   const simbolos = JSON.parse(simbolosLocalStorage);
 
@@ -93,11 +95,12 @@ const dataTable = (prediccionMunicipio) => {
     for (const key in threeDays[i].estatCel.valors) {
       const td1 = document.createElement("td");
       const img = document.createElement("img");
-
+      td1.classList.add("text-center", "h-100");
       const valorCielo = threeDays[i].estatCel.valors[key].valor;
       for (const key in simbolos[0].valors) {
         if (simbolos[0].valors[key].codi == valorCielo) {
           img.src = simbolos[0].valors[key].icona;
+          img.classList.add("h-100", "my-auto");
         }
       }
       td1.append(img);
@@ -111,6 +114,7 @@ const dataTable = (prediccionMunicipio) => {
     trTemp.append(th2);
     for (const key in threeDays[i].temp.valors) {
       const td2 = document.createElement("td");
+      td2.classList.add("text-center", "align-middle");
       td2.innerHTML = Math.round(threeDays[i].temp.valors[key].valor);
       trTemp.append(td2);
     }
@@ -122,6 +126,7 @@ const dataTable = (prediccionMunicipio) => {
     trRain.append(th3);
     for (const key in threeDays[i].precipitacio.valor) {
       const td3 = document.createElement("td");
+      td3.classList.add("text-center", "align-middle");
       td3.innerHTML = Math.round(threeDays[i].precipitacio.valor[key].valor);
       trRain.append(td3);
     }
@@ -133,6 +138,7 @@ const dataTable = (prediccionMunicipio) => {
     trWind.append(th4);
     for (const key in threeDays[i].velVent.valors) {
       const td4 = document.createElement("td");
+      td4.classList.add("text-center", "align-middle");
       td4.innerHTML = Math.round(threeDays[i].velVent.valors[key].valor);
       trWind.append(td4);
     }
@@ -148,6 +154,7 @@ const dataTable = (prediccionMunicipio) => {
   }
 };
 
+// If city forecast already stored in localStorage we get it and then fire the dataTable function
 if (localStorage.getItem("prediccionMunicipio")) {
   const prediccionMunicipio = localStorage.getItem("prediccionMunicipio");
   containerSearch.classList.add("d-none");
@@ -180,6 +187,7 @@ const fetchPrediccionMunicipio = (codigoMunicipio) => {
       containerError.classList.add("d-none");
       container2.classList.remove("d-none");
       dataTable(prediccionMunicipio);
+
       // Set local storage
       localStorage.setItem(
         "prediccionMunicipio",
@@ -191,6 +199,7 @@ const fetchPrediccionMunicipio = (codigoMunicipio) => {
     });
 };
 
+// Only if city code IS stored in localStorage and city forecast IS NOT stored we fire the get city forecast function
 if (
   localStorage.getItem("codigoMunicipio") &&
   !localStorage.getItem("prediccionMunicipio")
@@ -198,6 +207,7 @@ if (
   const codigoMunicipio = localStorage.getItem("codigoMunicipio");
   fetchPrediccionMunicipio(codigoMunicipio);
 }
+
 // Search functionality
 const searchForm = (municipios) => {
   cityForm.addEventListener("submit", (e) => {
@@ -210,7 +220,7 @@ const searchForm = (municipios) => {
     // We display in the HTML template the city name we have searched
     const cityName = document.querySelector(".city");
 
-    // Get search value
+    // Get search value (trimming empty spaces, lower case and replacing special signs `´ñ etc for normal letters)
     const city = cityForm.city.value
       .trim()
       .toLowerCase()
@@ -218,10 +228,10 @@ const searchForm = (municipios) => {
       .replace(/[\u0300-\u036f]/g, "");
     cityForm.reset();
 
+    // Const to check if the search returned any result
     const searchSuccess = [];
 
     // We loop through all cities and if the cityName is equal to the search input we fire the fetchPrediccionMunicipio (pasing the city code)
-    // If the search does not work we display the error message
     for (const key in municipios) {
       if (
         municipios[key].nom
@@ -230,6 +240,7 @@ const searchForm = (municipios) => {
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "") === city
       ) {
+        // If result we push it to the searchSuccess const
         searchSuccess.push(key);
         nombreMunicipio = municipios[key].nom;
         cityName.innerHTML = nombreMunicipio;
@@ -241,6 +252,8 @@ const searchForm = (municipios) => {
         localStorage.setItem("nombreMunicipio", nombreMunicipio);
       }
     }
+
+    // If the search was not successfull we display the error message
     if (searchSuccess.length == 0) {
       container2.classList.add("d-none");
       containerSearch.classList.add("d-none");
@@ -249,7 +262,7 @@ const searchForm = (municipios) => {
   });
 };
 
-// Fetch to get all "cities"
+// Fetch to get all "cities". If stored in localStorage we get it from there. Otherwise we fetch it (and then save it into localStorage)
 if (localStorage.getItem("municipios")) {
   const municipios = localStorage.getItem("municipios");
   searchForm(JSON.parse(municipios));
