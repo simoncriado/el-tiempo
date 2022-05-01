@@ -25,3 +25,7 @@ body {
 img {
   width: 1.5em;
 }
+th {
+  height: 40px !important;
+  width: 4.16% !important;
+}
