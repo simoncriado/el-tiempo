@@ -10,6 +10,7 @@ body {
   max-width: 90%;
 }
 .clock {
+  margin-left: 5px;
   font-size: 20px;
   letter-spacing: 0.2em;
 }
@@ -17,15 +18,12 @@ body {
   height: 1px;
 }
 .focus {
-  position: absolute;
-  height: 215px;
   border-radius: 10px;
   background-color: rgba(144, 238, 144, 0.5);
 }
 img {
   width: 1.5em;
 }
-th {
-  height: 40px !important;
-  width: 4.16% !important;
+table {
+  background-color: white;
 }

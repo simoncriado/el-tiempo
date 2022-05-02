@@ -10,7 +10,6 @@ if (!tbodyHoy.innerHTML) {
   containerSearch.classList.remove("d-none");
   container2.classList.add("d-none");
 }
-// SETTIMEOUT para el loader
 
 // Fetch para saber cuantas consultas hemos hecho / nos quedan
 fetch("https://api.meteo.cat/quotes/v1/consum-actual", {
@@ -97,10 +96,27 @@ const dataTable = (prediccionMunicipio) => {
       const img = document.createElement("img");
       td1.classList.add("text-center", "h-100");
       const valorCielo = threeDays[i].estatCel.valors[key].valor;
-      for (const key in simbolos[0].valors) {
-        if (simbolos[0].valors[key].codi == valorCielo) {
-          img.src = simbolos[0].valors[key].icona;
-          img.classList.add("h-100", "my-auto");
+      // Conditional to check if night time and then show the night icons, otherwise show the day icons
+      if (key <= 6) {
+        for (const key in simbolos[0].valors) {
+          if (simbolos[0].valors[key].codi == valorCielo) {
+            img.src = simbolos[0].valors[key].icona_nit;
+            img.classList.add("h-100", "my-auto");
+          }
+        }
+      } else if (key >= 21) {
+        for (const key in simbolos[0].valors) {
+          if (simbolos[0].valors[key].codi == valorCielo) {
+            img.src = simbolos[0].valors[key].icona_nit;
+            img.classList.add("h-100", "my-auto");
+          }
+        }
+      } else {
+        for (const key in simbolos[0].valors) {
+          if (simbolos[0].valors[key].codi == valorCielo) {
+            img.src = simbolos[0].valors[key].icona;
+            img.classList.add("h-100", "my-auto");
+          }
         }
       }
       td1.append(img);
