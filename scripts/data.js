@@ -25,7 +25,7 @@ fetch("https://api.meteo.cat/quotes/v1/consum-actual", {
     throw new Error(response.statusText);
   })
   .then(function (json) {
-    console.log(json);
+    const data = json
   })
   .catch(function (error) {
     console.log("Request failed: " + error.message);
