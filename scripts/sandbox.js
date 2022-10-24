@@ -17,6 +17,7 @@ const movingFocus = () => {
 
     // From the current date we extract the hours
     currentHour = actualDate.getHours();
+    currentHour = ("0" + currentHour).slice(-2);
 
     // We target all hours (0-23) in todays forecast table
     const todayTableHours = document.querySelectorAll(".todayHours");
@@ -31,7 +32,7 @@ const movingFocus = () => {
     // If so we add the class focus to display the green highlight on the current today´s hour
     todayTableHours.forEach((hour) => {
       hour.classList.remove("focus");
-      if (hour.innerText == `${currentHour}h` && todayTable.innerHTML != "") {
+      if (hour.innerText === `${currentHour}h` && todayTable.innerHTML !== "") {
         hour.classList.add("focus");
       }
     });
